@@ -64,34 +64,34 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
-            android:text="推荐 1" />
+            android:text="recommend 1" />
 
         <Button
             android:id="@+id/btn2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
-            android:text="推荐 2" />
+            android:text="recommend 2" />
 
         <Button
             android:id="@+id/btn3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
-            android:text="推荐 3" />
+            android:text="recommend 3" />
 
         <Button
             android:id="@+id/btn4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
-            android:text="推荐 4" />
+            android:text="recommend 4" />
     </LinearLayout>
 
     <Button
         android:id="@+id/btn5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="是否有空座" />
+        android:text="Are there any vacancies" />
 
 </LinearLayout>

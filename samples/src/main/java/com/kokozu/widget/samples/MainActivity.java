@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
                     }
                     List<SeatData> seats = seatView.selectRecommendSeats(recommendCount);
                     if (seats == null || seats.size() == 0) {
-                        Toast.makeText(MainActivity.this, "未获取到推荐座位", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "No recommended seats", Toast.LENGTH_SHORT).show();
                     }
                     seatView.setSelectedData(seats);
                 }
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
                 @Override
                 public void onClick(View v) {
                     boolean legal = seatView.isSelectedSeatLegal();
-                    String message = legal ? "符合规则" : "不许留空座";
+                    String message = legal ? "Conform to the rules" : "No empty seats";
                     Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
                 }
             };
@@ -228,17 +228,17 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
 
     @Override
     public void onPickLoverSeatOverMaxCount(int maxSelectCount) {
-        Toast.makeText(this, "情侣座超出座位数量限制", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Couple seat exceeds seat limit", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onSelectedSeatOverMaxCount(int maxSelectCount) {
-        Toast.makeText(this, "最多选择" + maxSelectCount + "个座位", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "most choice" + maxSelectCount + "seats", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onSelectSeatNotMatchRegular() {
-        Toast.makeText(this, "不能留空座", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Can't leave empty seat", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -254,11 +254,11 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
             seats.append(seat.point.y);
             seats.append(", ");
         }
-        Toast.makeText(this, "已选座位： " + seats, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Seat selected： " + seats, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onSelectedSeatSold() {
-        Toast.makeText(this, "选择的座位已被售出", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "The selected seat has already been sold", Toast.LENGTH_SHORT).show();
     }
 }

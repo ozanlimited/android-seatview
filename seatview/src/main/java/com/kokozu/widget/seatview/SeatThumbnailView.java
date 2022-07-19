@@ -248,11 +248,11 @@ public class SeatThumbnailView extends View {
                 drawable = mSeatSold;
             }
         } else if (seat.state == SeatData.STATE_SELECTED) {
-            // 情侣座左边的座位
+            // The left seat of the couple's seat
             if (seat.isLoverLeftSeat()) {
                 drawable = mSeatLoverSelectedL;
             }
-            // 情侣座右边的座位
+            // The right side of the couple's seat
             else if (seat.isLoverRightSeat()) {
                 drawable = mSeatLoverSelectedR;
                 left -= 1;
