@@ -549,6 +549,9 @@ public class SeatView extends View {
                     performZoomInMaxScale(row, col);
                 }
             }
+        } else if (seat.state == SeatData.STATE_SOLD) {
+            // todo clicked into already sold one
+            mChooseSeatListener.onSelectedSeatSold();
         }
 
         if (mChooseSeatListener != null && isMatchRegular) {
