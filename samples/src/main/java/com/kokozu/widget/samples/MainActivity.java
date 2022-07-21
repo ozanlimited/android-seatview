@@ -4,6 +4,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -99,109 +100,104 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
                     @Override
                     public void run() {
                         try {
-                            InputStream is = getAssets().open("seats.json");
-                            String seatsText = convertStreamToString(is);
-                            JSONObject object = JSON.parseObject(seatsText);
-                            List<Seat> seats =
-                                    JSON.parseArray(object.getString("seats"), Seat.class);
+                            final List<SeatData> seatList = generateSeats();
+                            final List<SeatData> soldSeats = generateSolds();
+                            runOnUiThread(
+                                    new Runnable() {
 
-                            if (seats != null) {
-                                final List<SeatData> seatList = new ArrayList<>();
-                                for (Seat seat : seats) {
-                                    SeatData seatData = new SeatData();
-                                    seatData.state =
-                                            seat.getSeatState() == 0
-                                                    ? SeatData.STATE_NORMAL
-                                                    : SeatData.STATE_SOLD;
-                                    seatData.point =
-                                            new Point(
-                                                    seat.getGraphRow(), seat.getGraphCol());
-                                    if (seat.getSeatType() == 1) {
-                                        seatData.type =
-                                                seat.isLoverL()
-                                                        ? SeatData.TYPE_LOVER_LEFT
-                                                        : SeatData.TYPE_LOVER_RIGHT;
-                                    } else {
-                                        seatData.type = SeatData.TYPE_NORMAL;
-                                    }
-                                    seatList.add(seatData);
-                                }
+                                        @Override
+                                        public void run() {
+                                            seatView.setSeatData(seatList);
+                                            seatView.setSoldData(soldSeats);
+                                        }
+                                    });
 
-                                try {
-                                    Thread.sleep(3000);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                                runOnUiThread(
-                                        new Runnable() {
-
-                                            @Override
-                                            public void run() {
-                                                seatView.setSeatData(seatList);
-                                            }
-                                        });
-                            }
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 })
                 .start();
+    }
 
-        new Thread(
-                new Runnable() {
-                    @Override
-                    public void run() {
+    private List<SeatData> generateSeats() {
+        try {
+            InputStream is = getAssets().open("seats.json");
+            String seatsText = convertStreamToString(is);
+            JSONObject object = JSON.parseObject(seatsText);
+            final List<Seat> seats =
+                    JSON.parseArray(object.getString("seats"), Seat.class);
 
-                        try {
-                            InputStream is = getAssets().open("sold_seat.json");
-                            String seatsText = convertStreamToString(is);
-                            JSONObject object = JSON.parseObject(seatsText);
-                            List<Seat> seats =
-                                    JSON.parseArray(object.getString("seats"), Seat.class);
-
-                            if (seats != null) {
-                                final List<SeatData> seatList = new ArrayList<>();
-                                for (Seat seat : seats) {
-                                    SeatData seatData = new SeatData();
-                                    seatData.state =
-                                            seat.getSeatState() == 0
-                                                    ? SeatData.STATE_NORMAL
-                                                    : SeatData.STATE_SOLD;
-                                    seatData.point =
-                                            new Point(
-                                                    seat.getGraphRow(), seat.getGraphCol());
-                                    if (seat.getSeatType() == 1) {
-                                        seatData.type =
-                                                seat.isLoverL()
-                                                        ? SeatData.TYPE_LOVER_LEFT
-                                                        : SeatData.TYPE_LOVER_RIGHT;
-                                    } else {
-                                        seatData.type = SeatData.TYPE_NORMAL;
-                                    }
-                                    seatList.add(seatData);
-                                }
-
-                                try {
-                                    Thread.sleep(1000);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                                runOnUiThread(
-                                        new Runnable() {
-
-                                            @Override
-                                            public void run() {
-                                                seatView.setSoldData(seatList);
-                                            }
-                                        });
-                            }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+            if (seats != null) {
+                final List<SeatData> seatList = new ArrayList<>();
+                for (Seat seat : seats) {
+                    SeatData seatData = new SeatData();
+                    seatData.state =
+                            seat.getSeatState() == 0
+                                    ? SeatData.STATE_NORMAL
+                                    : SeatData.STATE_SOLD;
+                    seatData.point =
+                            new Point(
+                                    seat.getGraphRow(), seat.getGraphCol());
+                    if (seat.getSeatType() == 1) {
+                        seatData.type =
+                                seat.isLoverL()
+                                        ? SeatData.TYPE_LOVER_LEFT
+                                        : SeatData.TYPE_LOVER_RIGHT;
+                    } else {
+                        seatData.type = SeatData.TYPE_NORMAL;
                     }
-                })
-                .start();
+                    seatList.add(seatData);
+                }
+                return seatList;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private List<SeatData> generateSolds() {
+        try {
+            InputStream is = getAssets().open("sold_seat.json");
+            String seatsText = convertStreamToString(is);
+            JSONObject object = JSON.parseObject(seatsText);
+            List<Seat> seats =
+                    JSON.parseArray(object.getString("seats"), Seat.class);
+
+            if (seats != null) {
+                final List<SeatData> seatList = new ArrayList<>();
+                for (Seat seat : seats) {
+                    SeatData seatData = new SeatData();
+                    seatData.state =
+                            seat.getSeatState() == 0
+                                    ? SeatData.STATE_NORMAL
+                                    : SeatData.STATE_SOLD;
+                    seatData.point =
+                            new Point(
+                                    seat.getGraphRow(), seat.getGraphCol());
+                    if (seat.getSeatType() == 1) {
+                        seatData.type =
+                                seat.isLoverL()
+                                        ? SeatData.TYPE_LOVER_LEFT
+                                        : SeatData.TYPE_LOVER_RIGHT;
+                    } else {
+                        seatData.type = SeatData.TYPE_NORMAL;
+                    }
+                    seatList.add(seatData);
+                }
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return seatList;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     static String convertStreamToString(InputStream is) {
@@ -228,22 +224,25 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
 
     @Override
     public void onPickLoverSeatOverMaxCount(int maxSelectCount) {
-        Toast.makeText(this, "Couple seat exceeds seat limit", Toast.LENGTH_SHORT).show();
+        Log.i("MainActivity","onPickLvrSOverMaxCount, Couple seat exceeds seat limit");
     }
 
     @Override
     public void onSelectedSeatOverMaxCount(int maxSelectCount) {
-        Toast.makeText(this, "most choice" + maxSelectCount + "seats", Toast.LENGTH_SHORT).show();
+        Log.i("MainActivity","onSelectedSeOverMxCount most choice" + maxSelectCount + "seats");
     }
 
     @Override
     public void onSelectSeatNotMatchRegular() {
-        Toast.makeText(this, "Can't leave empty seat", Toast.LENGTH_SHORT).show();
+        Log.i("MainActivity","onSelectSNtMatchRegular Can't leave empty seat");
     }
 
     @Override
     public void onSelectedSeatChanged(List<SeatData> selectedSeats) {
         if (selectedSeats == null) {
+            return;
+        }
+        if (selectedSeats.isEmpty()) {
             return;
         }
 
@@ -254,11 +253,11 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
             seats.append(seat.point.y);
             seats.append(", ");
         }
-        Toast.makeText(this, "Seat selected： " + seats, Toast.LENGTH_SHORT).show();
+        Log.d("MainActivity","onSelectedSeatChanged Seat selected： " + seats);
     }
 
     @Override
     public void onSelectedSeatSold() {
-        Toast.makeText(this, "The selected seat has already been sold", Toast.LENGTH_SHORT).show();
+        Log.i("MainActivity", "onSelectedSeatSold The selected seat has already been sold");
     }
 }

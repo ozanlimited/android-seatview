@@ -99,11 +99,11 @@ compile 'com.android.support:support-annotations:27.1.1' // support annotations
 <attr name="seat_thumbnailRangeLineColor" format="color|reference" />
 ```
 
-### 座位图控件
+### Seat Map Control
 
 `com.kokozu.widget.seatview.SeatView`
 
-### 座位缩略图控件
+### Seat Thumbnail Control
 
 `com.kokozu.widget.seatview.SeatThumbnailView`
 

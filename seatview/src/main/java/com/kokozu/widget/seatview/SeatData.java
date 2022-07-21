@@ -9,7 +9,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * 座位。
+ * seat。
  *
  * @author wuzhen
  * @since 2017-04-20
@@ -17,48 +17,48 @@ import java.lang.annotation.RetentionPolicy;
 public class SeatData implements Parcelable {
 
     /**
-     * 可选的座位。
+     * optional seat。
      */
     public static final int STATE_NORMAL = 0;
 
     /**
-     * 已售出的座位。
+     * Seats sold。
      */
     public static final int STATE_SOLD = 1;
 
     /**
-     * 选中的座位。
+     * selected seat。
      */
     public static final int STATE_SELECTED = 2;
 
     /**
-     * 普通座位。
+     * normal seat。
      */
     public static final int TYPE_NORMAL = 0;
 
     /**
-     * 情侣座左边的座位。
+     * The left seat of the couple's seat。
      */
     public static final int TYPE_LOVER_LEFT = 1;
 
     /**
-     * 情侣座右边的座位。
+     * The right side of the couple's seat。
      */
     public static final int TYPE_LOVER_RIGHT = 2;
 
     /**
-     * 座位的坐标。
+     * the coordinates of the seat。
      */
     public Point point;
 
     /**
-     * 座位的状态。
+     * seat status。
      */
     @SeatState
     public int state;
 
     /**
-     * 座位的类型。
+     * type of seat。
      */
     @SeatType
     public int type;
@@ -74,36 +74,36 @@ public class SeatData implements Parcelable {
     public String extra;
 
     /**
-     * 判断是否情侣座。
+     * Determine whether it is a couple。
      *
-     * @return 是否情侣座
+     * @return Is it a couple
      */
     boolean isLoverSeat() {
         return type == TYPE_LOVER_LEFT || type == TYPE_LOVER_RIGHT;
     }
 
     /**
-     * 判断是否为情侣座左边的座位。
+     * Determine whether it is the seat on the left of the couple's seat。
      *
-     * @return 是否情侣座左边的座位
+     * @return Is it the left seat of the couple's seat?
      */
     boolean isLoverLeftSeat() {
         return type == TYPE_LOVER_LEFT;
     }
 
     /**
-     * 判断是否为情侣座右边的座位。
+     * Determine whether it is the seat on the right side of the couple's seat。
      *
-     * @return 是否情侣座右边的座位
+     * @return Is the seat on the right side of the couple's seat?
      */
     boolean isLoverRightSeat() {
         return type == TYPE_LOVER_RIGHT;
     }
 
     /**
-     * 选中座位。
+     * select seat。
      *
-     * @return 是否选中成功
+     * @return Whether the selection is successful
      */
     boolean selectSeat() {
         if (state == STATE_NORMAL) {
@@ -114,9 +114,9 @@ public class SeatData implements Parcelable {
     }
 
     /**
-     * 取消选中的座位。
+     * unchecked seat。
      *
-     * @return 是否取消成功
+     * @return Whether the cancellation was successful
      */
     boolean unSelectSeat() {
         if (state == STATE_SELECTED) {

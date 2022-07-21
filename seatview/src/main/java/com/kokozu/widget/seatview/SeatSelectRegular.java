@@ -14,10 +14,10 @@ import java.util.Map;
 class SeatSelectRegular {
 
     /**
-     * 判断选择的座位是否合法。
+     * Determine if the seat selected is legal。
      *
-     * @param selectedSeat 已选中的座位
-     * @return 是否合法
+     * @param selectedSeat selected seat
+     * @return is it legal
      */
     static boolean isSelectedSeatLegal(
             List<SeatData> selectedSeat, Map<String, SeatData> seats, int maxCol) {
@@ -69,8 +69,9 @@ class SeatSelectRegular {
             r1 = getSeatStateByKey(row, i, seats);
             r2 = getSeatStateByKey(row, i + 1, seats);
 
-            // 同一排的座位 1 左或右挨着已选座位或者边界，ok
-            // ！,左或右不可能挨着自选,左或右加1如果挨着自选，则中间隔的已选或者没座,2左右挨着空座，左右隔一个不挨着自选，已选，边界
+            // Seat 1 in the same row is next to the selected seat or border on the left or right, ok
+            // ! ,Left or right cannot be next to optional, left or right plus 1 if next to optional,
+            // the middle space is selected or no seat, 2 is next to empty seat, left and right are not next to optional, selected, border
             if (l1 == SeatData.STATE_SOLD || r1 == SeatData.STATE_SOLD) {
                 if (l2 == SeatData.STATE_SELECTED && l1 != SeatData.STATE_SOLD) {
                     return false;

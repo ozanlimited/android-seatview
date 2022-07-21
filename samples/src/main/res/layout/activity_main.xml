@@ -26,6 +26,7 @@
             app:seat_drawableNormal="@drawable/ic_seat_normal"
             app:seat_drawableSelected="@drawable/ic_seat_selected"
             app:seat_drawableSold="@drawable/ic_seat_sold"
+            app:seat_showCenterLine="false"
             app:seat_maxSelectedCount="5"
             app:seat_seatNoLeftMargin="10dp"
             app:seat_seatNoTextColor="#40c6f7"
@@ -51,7 +52,8 @@
             app:seat_drawableSold="@drawable/ic_seat_sold"
             app:seat_thumbnailBackground="@drawable/seat_thumbnail_background"
             app:seat_thumbnailRangeLineColor="#ff0000"
-            app:seat_thumbnailRangeLineWidth="1dp" />
+            app:seat_thumbnailRangeLineWidth="1dp"
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <LinearLayout

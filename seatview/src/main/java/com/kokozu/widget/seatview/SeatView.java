@@ -231,13 +231,13 @@ public class SeatView extends View {
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        // 座位数据为空
+        // Seat data is empty
         if (mSeatData == null || mSeatData.size() == 0) {
             Log.e(TAG, "mSeatData is Empty.");
             return;
         }
 
-        // 座位数据为空
+        // Seat data is empty
         if (mMaxRow <= 0 || mMaxCol <= 0) {
             Log.e(TAG, "mMaxRow or mMaxCol is less than zero.");
             return;
@@ -246,7 +246,7 @@ public class SeatView extends View {
         int width = getWidth();
         int height = getHeight();
 
-        // 初始化缩放比例
+        // Initialize scaling
         if (mScale == -1) {
             initSeatScale(width, height);
         }
@@ -255,10 +255,10 @@ public class SeatView extends View {
             return;
         }
 
-        limitScaleRange(); // 限制缩放的比例
-        limitCurrentXY(); // 限制座位图的位置
+        limitScaleRange(); // Limit scaling
+        limitCurrentXY(); // Restrict the location of the seat map
 
-        // 座位的中心
+        // the center of the seat
         int centerSeatX = mMaxCol / 2;
         int centerSeatY = mMaxRow / 2;
 
@@ -305,7 +305,7 @@ public class SeatView extends View {
                 lineY = top;
             }
 
-            // 画座位
+            // painted seat
             drawSeat(canvas, seat, left, top, right, bottom);
         }
 
@@ -315,7 +315,7 @@ public class SeatView extends View {
 
         canvas.restore();
 
-        // 画座位的中心线
+        // Draw the centerline of the seat
         if (lineX > 0 && lineY > 0 && mShowCenterLine) {
             boolean seatNotFill = (seatTotalHeight < getHeight());
             float length = (seatTotalHeight < getHeight() ? seatTotalHeight : getHeight());
@@ -328,7 +328,7 @@ public class SeatView extends View {
             mCenterLinePainter.drawLine(canvas, lineX, startY, length);
         }
 
-        // 画座位的排号
+        // draw seat numbers
         if (mShowSeatNo && mSeatNo != null) {
             float seatNoHeight = mMaxRow * mSeatHeight * mScale;
             mSeatNoPainter.drawSeatNo(mSeatNo, canvas, mMaxRow, mDrawStartY, seatNoHeight);
@@ -517,12 +517,12 @@ public class SeatView extends View {
         }
 
         boolean isMatchRegular = true;
-        // 已选座位
+        // Seat selected
         if (seat.state == SeatData.STATE_SELECTED) {
             seat.unSelectSeat();
             mSelectedSeats.remove(seat);
 
-            // 情侣座
+            // couple
             if (seat.isLoverSeat()) {
                 unSelectLoverSeat(seat);
             }
@@ -536,14 +536,14 @@ public class SeatView extends View {
                 return;
             }
 
-            // 判断选座规则：先把座位放到已选中的座位列表中，然后判断规则
+            // Judging seat selection rules: first put the seats in the selected seat list, and then judge the rules
             seat.selectSeat();
             mSelectedSeats.add(seat);
 
-            // 情侣座
+            // couple
             if (seat.isLoverSeat()) {
                 isMatchRegular = selectLoverSeat(seat);
-            } else { // 非情侣座
+            } else { // non-couple
                 isMatchRegular = checkSeatRegular(seat, true);
                 if (isMatchRegular && selectedCount == 0) {
                     performZoomInMaxScale(row, col);
@@ -615,9 +615,9 @@ public class SeatView extends View {
     }
 
     private boolean checkSeatRegular(SeatData seat, boolean selectSeat) {
-        // 选座时校验选座规则
+        // Check seat selection rules when choosing seats
         if (isCheckRegularWhilePickSeat) {
-            // 该座位不符合选座规则
+            // The seat does not meet the seat selection rules
             if (!isSelectedSeatLegal()) {
                 if (selectSeat) {
                     seat.unSelectSeat();
@@ -654,6 +654,7 @@ public class SeatView extends View {
             mSelectedSeats.add(other);
 
             if (checkSeatRegular(seat, true)) {
+                // ozan fix. never works below code
                 if (Utils.isEmpty(mSelectedSeats)) {
                     performZoomInMaxScale(seat.point.x, seat.point.y);
                 }
@@ -746,9 +747,9 @@ public class SeatView extends View {
     }
 
     /**
-     * 设置已售的座位数据。
+     * Set sold seat data。
      *
-     * @param seats 已售的座位
+     * @param seats Seats sold
      */
     public void setSoldData(List<SeatData> seats) {
         mSoldSeats.clear();
@@ -759,13 +760,13 @@ public class SeatView extends View {
         mSoldSeats.addAll(seats);
         mBestSeatFinder.setSoldSeats(seats);
 
-        // 判断选中座位是否已售
+        // Determine if the selected seat is sold
         if (!Utils.isEmpty(mSelectedSeats)) {
-            // 更新已选中座位图
+            // Update the selected seat map
             boolean needUpdateSelected = false;
             for (SeatData seat : mSelectedSeats) {
                 SeatData data = mSeatData.get(seat.seatKey());
-                // 已售
+                // sold
                 if (data != null && data.state == SeatData.STATE_SOLD) {
                     needUpdateSelected = true;
                 }
@@ -775,10 +776,10 @@ public class SeatView extends View {
                 for (SeatData seat : mSelectedSeats) {
                     SeatData data = mSeatData.get(seat.seatKey());
                     if (data != null) {
-                        data.unSelectSeat(); // 重置已选座位
+                        data.unSelectSeat(); // Reset Selected Seats
                     }
                 }
-                mSelectedSeats.clear(); // 清空已选座位图
+                mSelectedSeats.clear(); // Clear the selected seat map
                 if (mChooseSeatListener != null) {
                     mChooseSeatListener.onSelectedSeatChanged(mSelectedSeats);
                 }
@@ -1066,7 +1067,7 @@ public class SeatView extends View {
     }
 
     /**
-     * 判断选择的座位是否符合规则。
+     * Determine if the selected seat is in compliance with the rules。
      *
      * @return 是否符合规则
      */

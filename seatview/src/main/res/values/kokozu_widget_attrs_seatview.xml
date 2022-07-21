@@ -4,52 +4,52 @@
     <!-- SeatView styleables -->
     <declare-styleable name="SeatView">
 
-        <!-- 可选座位的图片 -->
+        <!-- Pictures of optional seats -->
         <attr name="seat_drawableNormal" format="reference" />
 
-        <!-- 已售座位的图片 -->
+        <!-- Pictures of seats sold -->
         <attr name="seat_drawableSold" format="reference" />
 
-        <!-- 已选座位的图片 -->
+        <!-- Picture of selected seat -->
         <attr name="seat_drawableSelected" format="reference" />
 
-        <!-- 可选的情侣座左边座位的图片 -->
+        <!-- Image of the left seat of the optional couples seat -->
         <attr name="seat_drawableLoverLeftNormal" format="reference" />
 
-        <!-- 可选的情侣座右边座位的图片 -->
+        <!-- Image of the right seat of the optional couples seat -->
         <attr name="seat_drawableLoverRightNormal" format="reference" />
 
-        <!-- 已售的情侣座左边座位的图片 -->
+        <!-- A picture of the left seat of the sold couples seat -->
         <attr name="seat_drawableLoverLeftSold" format="reference" />
 
-        <!-- 已售的情侣座右边座位的图片 -->
+        <!-- Picture of the right seat of the sold couples seat -->
         <attr name="seat_drawableLoverRightSold" format="reference" />
 
-        <!-- 已选的情侣座左边座位的图片 -->
+        <!-- Picture of the left seat of the selected couples seat -->
         <attr name="seat_drawableLoverLeftSelected" format="reference" />
 
-        <!-- 已选的情侣座右边座位的图片 -->
+        <!-- Picture of the right seat of the selected couples seat -->
         <attr name="seat_drawableLoverRightSelected" format="reference" />
 
-        <!-- 座位可选的最大数量 -->
+        <!-- Maximum number of seats available -->
         <attr name="seat_maxSelectedCount" format="integer" />
 
-        <!-- 在选座时是否限制座位的规则 -->
+        <!-- Rules on whether to restrict seats when selecting seats -->
         <attr name="seat_checkRegularWhilePickSeat" format="boolean" />
 
-        <!-- 在推荐座位时是否限制座位的规则 -->
+        <!-- Rules on whether to restrict seats when recommending seats -->
         <attr name="seat_checkRegularWhileRecommend" format="boolean" />
 
-        <!-- 是否显示座位图的中轴线 -->
+        <!-- Whether to display the central axis of the seat map -->
         <attr name="seat_showCenterLine" format="boolean" />
 
-        <!-- 座位图中轴线的颜色 -->
+        <!-- The color of the axis line in the seating chart -->
         <attr name="seat_centerLineColor" format="color|reference" />
 
-        <!-- 座位图中轴线的颜色 -->
+        <!-- The color of the axis line in the seating chart -->
         <attr name="seat_centerLineWidth" format="dimension|reference" />
 
-        <!-- 是否显示座位的排号 -->
+        <!-- Whether to display the row number of the seat -->
         <attr name="seat_showSeatNo" format="boolean" />
 
         <!-- 排号的宽度 -->
