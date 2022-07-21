@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
                                         ? SeatData.TYPE_LOVER_LEFT
                                         : SeatData.TYPE_LOVER_RIGHT;
                     } else {
-                        seatData.type = SeatData.TYPE_NORMAL;
+                        seatData.type = seat.isAfflicted() ? SeatData.TYPE_AFFLICTED: SeatData.TYPE_NORMAL;
                     }
                     seatList.add(seatData);
                 }
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
                                         ? SeatData.TYPE_LOVER_LEFT
                                         : SeatData.TYPE_LOVER_RIGHT;
                     } else {
-                        seatData.type = SeatData.TYPE_NORMAL;
+                        seatData.type = seat.isAfflicted() ? SeatData.TYPE_AFFLICTED: SeatData.TYPE_NORMAL;
                     }
                     seatList.add(seatData);
                 }

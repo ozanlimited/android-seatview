@@ -2055,7 +2055,7 @@
       "seatCol": "5",
       "seatRow": "4",
       "seatState": 0,
-      "seatType": 0
+      "seatType": 3
     },
     {
       "graphCol": 6,
@@ -2066,7 +2066,7 @@
       "seatCol": "4",
       "seatRow": "4",
       "seatState": 0,
-      "seatType": 0
+      "seatType": 3
     },
     {
       "graphCol": 5,
@@ -2077,7 +2077,7 @@
       "seatCol": "3",
       "seatRow": "4",
       "seatState": 0,
-      "seatType": 0
+      "seatType": 3
     },
     {
       "graphCol": 4,

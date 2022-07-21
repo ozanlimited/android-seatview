@@ -78,6 +78,7 @@ public class SeatView extends View {
     private int mMaxSelectedCount;
 
     private Drawable mSeatNormal;
+    private Drawable mSeatAfflicted;
     private Drawable mSeatSold;
     private Drawable mSeatSelected;
     private Drawable mSeatLoverNormalL;
@@ -152,6 +153,7 @@ public class SeatView extends View {
                 context.obtainStyledAttributes(
                         attrs, R.styleable.SeatView, defStyleAttr, defStyleRes);
         this.mSeatNormal = a.getDrawable(R.styleable.SeatView_seat_drawableNormal);
+        this.mSeatAfflicted = a.getDrawable(R.styleable.SeatView_seat_drawableAfflicted);
         this.mSeatSold = a.getDrawable(R.styleable.SeatView_seat_drawableSold);
         this.mSeatSelected = a.getDrawable(R.styleable.SeatView_seat_drawableSelected);
         this.mSeatLoverNormalL = a.getDrawable(R.styleable.SeatView_seat_drawableLoverLeftNormal);
@@ -355,18 +357,20 @@ public class SeatView extends View {
         Rect bounds = new Rect(left, top, right, bottom);
         Drawable drawable;
 
-        // 座位可选
+        // Seat optional
         if (seat.state == SeatData.STATE_NORMAL) {
-            // 情侣座左边的座位
+            // The left seat of the couple's seat
             if (seat.isLoverLeftSeat()) {
                 drawable = mSeatLoverNormalL;
             }
-            // 情侣座右边的座位
+            // The right side of the couple's seat
             else if (seat.isLoverRightSeat()) {
                 drawable = mSeatLoverNormalR;
                 bounds.left -= 1;
+            } else if (seat.isAfflictedSeat()) {
+                drawable = mSeatAfflicted;
             }
-            // 普通座位
+            // normal seat
             else {
                 drawable = mSeatNormal;
             }

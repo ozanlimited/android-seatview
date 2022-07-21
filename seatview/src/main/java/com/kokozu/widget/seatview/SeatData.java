@@ -47,6 +47,11 @@ public class SeatData implements Parcelable {
     public static final int TYPE_LOVER_RIGHT = 2;
 
     /**
+     * Afflicted seat。
+     */
+    public static final int TYPE_AFFLICTED = 3;
+
+    /**
      * the coordinates of the seat。
      */
     public Point point;
@@ -80,6 +85,9 @@ public class SeatData implements Parcelable {
      */
     boolean isLoverSeat() {
         return type == TYPE_LOVER_LEFT || type == TYPE_LOVER_RIGHT;
+    }
+    boolean isAfflictedSeat() {
+        return type == TYPE_AFFLICTED;
     }
 
     /**
@@ -136,7 +144,7 @@ public class SeatData implements Parcelable {
     }
 
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({TYPE_NORMAL, TYPE_LOVER_LEFT, TYPE_LOVER_RIGHT})
+    @IntDef({TYPE_NORMAL, TYPE_LOVER_LEFT, TYPE_LOVER_RIGHT, TYPE_AFFLICTED})
     public @interface SeatType {
     }
 

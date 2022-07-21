@@ -7,6 +7,9 @@
         <!-- Pictures of optional seats -->
         <attr name="seat_drawableNormal" format="reference" />
 
+        <!-- Pictures of AFFLİCTED seats -->
+        <attr name="seat_drawableAfflicted" format="reference" />
+
         <!-- Pictures of seats sold -->
         <attr name="seat_drawableSold" format="reference" />
 

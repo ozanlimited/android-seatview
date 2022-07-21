@@ -27,8 +27,8 @@ public class Seat {
     /** mode: -1 = not sell; 0 = can be selected; 1 = has been selected; 2 = clicked; 3 = locked; */
     private int seatState;
 
-    /** 1 情侣座。 */
-    private int seatType; // 座位的类型
+    /** 1 couple。 */
+    private int seatType; // type of seat
 
     @JSONField(name = "isLoverL")
     private boolean isLoverL;
@@ -163,6 +163,10 @@ public class Seat {
 
     public boolean isLoverL() {
         return isLoverL;
+    }
+
+    public boolean isAfflicted() {
+        return seatType == 3;
     }
 
     @JSONField(name = "isLoverL")
