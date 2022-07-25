@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.kokozu.widget.seatview.OnChooseSeatListener;
 import com.kokozu.widget.seatview.SeatData;
 import com.kokozu.widget.seatview.SeatThumbnailView;
@@ -20,7 +22,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements OnChooseSeatListener {
 
@@ -100,15 +105,16 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
                     @Override
                     public void run() {
                         try {
+                            final Pair<String[], List<SeatData>> biletinialList = generateBiletinial();
                             final List<SeatData> seatList = generateSeats();
-                            final List<SeatData> soldSeats = generateSolds();
+//                            final List<SeatData> soldSeats = generateSolds();
                             runOnUiThread(
                                     new Runnable() {
 
                                         @Override
                                         public void run() {
-                                            seatView.setSeatData(seatList);
-                                            seatView.setSoldData(soldSeats);
+                                            seatView.setSeatData(biletinialList.second,biletinialList.first);
+//                                            seatView.setSoldData(soldSeats);
                                         }
                                     });
 
@@ -118,6 +124,58 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
                     }
                 })
                 .start();
+    }
+
+    private Pair<String[], List<SeatData>> generateBiletinial() {
+        try {
+            final List<SeatData> seatList = new ArrayList<>();
+
+            InputStream is = getAssets().open("biletinial/seats1.json");
+            String seatsText = convertStreamToString(is);
+            HashMap<String,List<BSeat>> SEATSOFBILETINIAL = (HashMap<String, List<BSeat>>) JSON.parseObject(seatsText, new TypeReference<Map<String, List<BSeat>>>() {});
+
+            Set<String> rowSet = SEATSOFBILETINIAL.keySet();
+            String[] rowsArray = new String[rowSet.size()];
+            int rowIndex = 1;
+            for (String seatRow : rowSet) {
+                rowsArray[rowIndex - 1] = seatRow;
+                List<BSeat> row = SEATSOFBILETINIAL.get(seatRow);
+                boolean drawRightSide = false;
+                for (int i = 0; i < row.size(); i++) {
+                    SeatData seatData = new SeatData();
+                    if (row.get(i).getSeatType().equals("SEALED") || row.get(i).getSeatType().equals("LETTER")) {
+                        // boşluk
+                        continue;
+                    }
+                    seatData.state = row.get(i).isAvailable()
+                                    ? SeatData.STATE_NORMAL
+                                    : SeatData.STATE_SOLD;
+                    seatData.point = new Point(rowIndex, i+1);
+                    if (row.get(i).getSeatType().equals("HANDICAPPED")) {
+                        seatData.type = SeatData.TYPE_AFFLICTED;
+                    } else if (row.get(i).getSeatType().equals("DOUBLE")) {
+                        // çift koltuk
+                        if (drawRightSide) {
+                            // koltuğun sağ tarafı
+                            seatData.type = SeatData.TYPE_LOVER_RIGHT;
+                            drawRightSide = false;
+                        } else {
+                            // koltuğun sol tarafı
+                            seatData.type = SeatData.TYPE_LOVER_LEFT;
+                            drawRightSide = true;
+                        }
+                    } else {
+                        seatData.type = SeatData.TYPE_NORMAL;
+                    }
+                    seatList.add(seatData);
+                }
+                rowIndex = rowIndex+1;
+            }
+            return new Pair(rowsArray, seatList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private List<SeatData> generateSeats() {
@@ -187,11 +245,6 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
                     seatList.add(seatData);
                 }
 
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 return seatList;
             }
         } catch (IOException e) {
