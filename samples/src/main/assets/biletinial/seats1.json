@@ -1,0 +1,664 @@
+{
+  "F": [
+    {
+      "seatName": "F14",
+      "seatId": 2884834,
+      "seatType": "HANDICAPPED",
+      "available": true
+    },
+    {
+      "seatName": "F13",
+      "seatId": 2884918,
+      "seatType": "HANDICAPPED",
+      "available": true
+    },
+    {
+      "seatName": "F12",
+      "seatId": 2884919,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "F11",
+      "seatId": 2884920,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "F10",
+      "seatId": 2884921,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "F9",
+      "seatId": 2884922,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "F8",
+      "seatId": 2884923,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "NONAME",
+      "seatId": 2884924,
+      "seatType": "SEALED",
+      "available": false
+    },
+    {
+      "seatName": "NONAME",
+      "seatId": 2884925,
+      "seatType": "SEALED",
+      "available": false
+    },
+    {
+      "seatName": "NONAME",
+      "seatId": 2884926,
+      "seatType": "SEALED",
+      "available": false
+    },
+    {
+      "seatName": "NONAME",
+      "seatId": 2884927,
+      "seatType": "SEALED",
+      "available": false
+    },
+    {
+      "seatName": "F7",
+      "seatId": 2884928,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "F6",
+      "seatId": 2884929,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "F5",
+      "seatId": 2884930,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "F4",
+      "seatId": 2884931,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "F3",
+      "seatId": 2884932,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "F2",
+      "seatId": 2884933,
+      "seatType": "HANDICAPPED",
+      "available": true
+    },
+    {
+      "seatName": "F1",
+      "seatId": 2884934,
+      "seatType": "HANDICAPPED",
+      "available": true
+    }
+  ],
+  "E": [
+    {
+      "seatName": "E18",
+      "seatId": 2884900,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E17",
+      "seatId": 2884901,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E16",
+      "seatId": 2884902,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E15",
+      "seatId": 2884903,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E14",
+      "seatId": 2884904,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E13",
+      "seatId": 2884905,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E12",
+      "seatId": 2884906,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E11",
+      "seatId": 2884907,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E10",
+      "seatId": 2884908,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E9",
+      "seatId": 2884909,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E8",
+      "seatId": 2884910,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E7",
+      "seatId": 2884911,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E6",
+      "seatId": 2884912,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E5",
+      "seatId": 2884913,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E4",
+      "seatId": 2884914,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E3",
+      "seatId": 2884915,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E2",
+      "seatId": 2884916,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "E1",
+      "seatId": 2884917,
+      "seatType": "SINGLE",
+      "available": true
+    }
+  ],
+  "D": [
+    {
+      "seatName": "D18",
+      "seatId": 2884832,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D17",
+      "seatId": 2884883,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D16",
+      "seatId": 2884884,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D15",
+      "seatId": 2884885,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D14",
+      "seatId": 2884886,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D13",
+      "seatId": 2884887,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D12",
+      "seatId": 2884888,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D11",
+      "seatId": 2884889,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D10",
+      "seatId": 2884890,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D9",
+      "seatId": 2884891,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D8",
+      "seatId": 2884892,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D7",
+      "seatId": 2884893,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D6",
+      "seatId": 2884894,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D5",
+      "seatId": 2884895,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D4",
+      "seatId": 2884896,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D3",
+      "seatId": 2884897,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D2",
+      "seatId": 2884898,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "D1",
+      "seatId": 2884899,
+      "seatType": "SINGLE",
+      "available": true
+    }
+  ],
+  "C": [
+    {
+      "seatName": "C18",
+      "seatId": 2884831,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C17",
+      "seatId": 2884866,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C16",
+      "seatId": 2884867,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C15",
+      "seatId": 2884868,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C14",
+      "seatId": 2884869,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C13",
+      "seatId": 2884870,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C12",
+      "seatId": 2884871,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C11",
+      "seatId": 2884872,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C10",
+      "seatId": 2884873,
+      "seatType": "SINGLE",
+      "available": false
+    },
+    {
+      "seatName": "C9",
+      "seatId": 2884874,
+      "seatType": "SINGLE",
+      "available": false
+    },
+    {
+      "seatName": "C8",
+      "seatId": 2884875,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C7",
+      "seatId": 2884876,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C6",
+      "seatId": 2884877,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C5",
+      "seatId": 2884878,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C4",
+      "seatId": 2884879,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C3",
+      "seatId": 2884880,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C2",
+      "seatId": 2884881,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "C1",
+      "seatId": 2884882,
+      "seatType": "SINGLE",
+      "available": true
+    }
+  ],
+  "B": [
+    {
+      "seatName": "B18",
+      "seatId": 2884830,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B17",
+      "seatId": 2884849,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B16",
+      "seatId": 2884850,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B15",
+      "seatId": 2884851,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B14",
+      "seatId": 2884852,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B13",
+      "seatId": 2884853,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B12",
+      "seatId": 2884854,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B11",
+      "seatId": 2884855,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B10",
+      "seatId": 2884856,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B9",
+      "seatId": 2884857,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B8",
+      "seatId": 2884858,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B7",
+      "seatId": 2884859,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B6",
+      "seatId": 2884860,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B5",
+      "seatId": 2884861,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B4",
+      "seatId": 2884862,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B3",
+      "seatId": 2884863,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B2",
+      "seatId": 2884864,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "B1",
+      "seatId": 2884865,
+      "seatType": "SINGLE",
+      "available": true
+    }
+  ],
+  "A": [
+    {
+      "seatName": "NONAME",
+      "seatId": 2884826,
+      "seatType": "SEALED",
+      "available": false
+    },
+    {
+      "seatName": "NONAME",
+      "seatId": 2884827,
+      "seatType": "SEALED",
+      "available": false
+    },
+    {
+      "seatName": "A14",
+      "seatId": 2884828,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "A13",
+      "seatId": 2884829,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "A12",
+      "seatId": 2884835,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "A11",
+      "seatId": 2884836,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "A10",
+      "seatId": 2884837,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "A9",
+      "seatId": 2884838,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "A8",
+      "seatId": 2884839,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "A7",
+      "seatId": 576742,
+      "seatType": "DOUBLE",
+      "available": true,
+      "associatedSeat": "6a25bc8a-23b9-4a11-b710-92392da9712c"
+    },
+    {
+      "seatName": "A6",
+      "seatId": 576743,
+      "seatType": "DOUBLE",
+      "available": true,
+      "associatedSeat": "6a25bc8a-23b9-4a11-b710-92392da9712c"
+    },
+    {
+      "seatName": "A5",
+      "seatId": 2884842,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "A4",
+      "seatId": 2884843,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "A3",
+      "seatId": 2884844,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "A2",
+      "seatId": 2884845,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "A1",
+      "seatId": 2884846,
+      "seatType": "SINGLE",
+      "available": true
+    },
+    {
+      "seatName": "NONAME",
+      "seatId": 2884847,
+      "seatType": "SEALED",
+      "available": false
+    },
+    {
+      "seatName": "NONAME",
+      "seatId": 2884848,
+      "seatType": "SEALED",
+      "available": false
+    }
+  ]
+}

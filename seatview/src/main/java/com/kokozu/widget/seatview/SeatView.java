@@ -467,14 +467,14 @@ public class SeatView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int action = event.getAction() & MotionEvent.ACTION_MASK;
-        // 手指按下
+        // finger press
         if (action == MotionEvent.ACTION_DOWN) {
             mTouchDownTime = SystemClock.uptimeMillis();
             mTouchDownPoint.set(event.getX(), event.getY());
             mTouchEventPoint.set(event.getX(), event.getY());
             mTouchMode = DRAG;
         }
-        // 第二个手指按下
+        // second finger press
         else if (action == MotionEvent.ACTION_POINTER_DOWN) {
             mTouchDown2Point.set(event.getX(1), event.getY(1));
             mInitFingersDis = spacing(event);
@@ -484,22 +484,22 @@ public class SeatView extends View {
                 mTouchMode = ZOOM;
             }
         }
-        // 手指抬起
+            // finger raised
         else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
             isMoveMode = false;
             if (mSelectable
                     && Math.abs(event.getX() - mTouchDownPoint.x) < mTouchSlop
                     && Math.abs(event.getY() - mTouchDownPoint.y) < mTouchSlop) {
 
-                // 处理点击事件
+                // Handling click events
                 performClickSeat(event);
             }
         }
-        // 第二个手指抬起
+        // second finger raised
         else if (action == MotionEvent.ACTION_POINTER_UP) {
             mTouchMode = NONE;
         }
-        // 手指移动
+        // finger movement
         else if (action == MotionEvent.ACTION_MOVE) {
             performMoveEvent(event);
         }
@@ -609,6 +609,7 @@ public class SeatView extends View {
 
             if (mScale != mLatestScale) {
                 // 计算缩放时 currentX、currentY 的值
+                // Calculate the value of currentX, currentY when zooming
                 float midX = (mTouchDownPoint.x + mTouchDown2Point.x) / 2;
                 float midY = (mTouchDownPoint.y + mTouchDown2Point.y) / 2;
 
@@ -828,11 +829,12 @@ public class SeatView extends View {
     }
 
     /**
-     * 设置座位图的数据。
+     * Set seat map data。
      *
-     * @param seats 座位列表
+     * @param seats Seat List
+     * @param rows rows
      */
-    public void setSeatData(List<SeatData> seats) {
+    public void setSeatData(List<SeatData> seats, String[] rows) {
         mSelectedSeats.clear();
         mSeatData.clear();
         mBestSeatFinder.setSeats(seats);
@@ -860,16 +862,21 @@ public class SeatView extends View {
         int width = getWidth();
         int height = getHeight();
         initSeatScale(width, height);
-
-        if (mMaxRow > 0 && rowMap.size() > 0) {
-            mSeatNo = new String[mMaxRow];
-            // 座位排号
-            int seatNo = 1;
-            for (int i = 1; i <= mMaxRow; i++) {
-                int count = rowMap.get(i, 0);
-                mSeatNo[i - 1] = count > 0 ? String.valueOf(seatNo) : "";
-                if (count > 0) {
-                    seatNo++;
+        if (rows != null) {
+            // rows given from outside
+            mSeatNo = rows;
+        } else {
+            // generate rows from scratch like 1,2,3,4...
+            if (mMaxRow > 0 && rowMap.size() > 0) {
+                mSeatNo = new String[mMaxRow];
+                // seat number
+                int seatNo = 1;
+                for (int i = 1; i <= mMaxRow; i++) {
+                    int count = rowMap.get(i, 0);
+                    mSeatNo[i - 1] = count > 0 ? String.valueOf(seatNo) : "";
+                    if (count > 0) {
+                        seatNo++;
+                    }
                 }
             }
         }
