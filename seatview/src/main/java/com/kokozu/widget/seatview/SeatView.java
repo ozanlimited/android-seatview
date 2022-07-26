@@ -3,6 +3,7 @@ package com.kokozu.widget.seatview;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -31,6 +32,7 @@ import java.util.Map;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 
 /**
  * 座位图控件。
@@ -116,6 +118,7 @@ public class SeatView extends View {
     private boolean mShowSeatNo;
     private String[] mSeatNo;
     private SeatNoPainter mSeatNoPainter;
+    private int mSeatCodesTextColor;
 
     /**
      * 座位缩略图
@@ -127,6 +130,8 @@ public class SeatView extends View {
      * 推荐座位
      */
     private BestSeatFinder mBestSeatFinder;
+    private Typeface typeFace;
+    private Paint seatCodesPaint;
 
     public SeatView(Context context) {
         super(context);
@@ -178,6 +183,9 @@ public class SeatView extends View {
 
         this.mShowCenterLine = a.getBoolean(R.styleable.SeatView_seat_showCenterLine, true);
         this.mShowSeatNo = a.getBoolean(R.styleable.SeatView_seat_showSeatNo, false);
+        int fontId = a.getResourceId(R.styleable.SeatView_seat_fontFamily, 0);
+        mSeatCodesTextColor = a.getColor(R.styleable.SeatView_seat_seatCodesTextColor, Color.RED);
+        setFont(fontId);
         a.recycle();
 
         mCenterLinePainter = new CenterLinePainter(context, attrs, defStyleAttr, defStyleRes);
@@ -204,6 +212,12 @@ public class SeatView extends View {
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
 
         mBestSeatFinder = new BestSeatFinder();
+    }
+
+    private void setFont(int fontId) {
+        if (fontId > 0) {
+            typeFace = ResourcesCompat.getFont(getContext(),fontId);
+        }
     }
 
     @Override
@@ -411,9 +425,28 @@ public class SeatView extends View {
             }
         }
         if (drawable != null) {
+            if (seatCodesPaint == null) {
+                buildSeatCodesPaint();
+            }
+            float textSize = 10.0f + (15.0f * (mScale));
+            seatCodesPaint.setTextSize(textSize);
             drawable.setBounds(bounds);
             drawable.draw(canvas);
+            Rect textBound = new Rect();
+            seatCodesPaint.getTextBounds(seat.seatNo, 0, seat.seatNo.length(), textBound);
+            canvas.drawText(seat.seatNo,
+                    bounds.left + ((bounds.right-bounds.left)/2),
+                    bounds.top + ((bounds.bottom -bounds.top)/2) - (textBound.top)/2,
+                    seatCodesPaint);
         }
+    }
+
+    private void buildSeatCodesPaint() {
+        seatCodesPaint = new Paint();
+        seatCodesPaint.setTypeface(typeFace);
+        seatCodesPaint.setColor(mSeatCodesTextColor);
+        seatCodesPaint.setAntiAlias(true);
+        seatCodesPaint.setTextAlign(Paint.Align.CENTER);
     }
 
     private void limitScaleRange() {

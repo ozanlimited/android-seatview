@@ -25,4 +25,8 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.annotation:annotation:1.4.0'
+    def core_version = "1.8.0"
+
+    // Java language implementation
+    implementation "androidx.core:core:$core_version"
 }

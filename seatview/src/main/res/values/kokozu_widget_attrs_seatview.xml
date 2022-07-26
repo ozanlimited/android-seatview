@@ -91,6 +91,10 @@
         <!-- 座位缩略图中座位范围线条的颜色 -->
         <attr name="seat_thumbnailRangeLineColor" format="color|reference" />
 
+        <attr name="seat_fontFamily" />
+        <attr name="seat_seatCodesTextColor" format="color|reference" />
+
+
     </declare-styleable>
 
 </resources>

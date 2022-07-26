@@ -35,7 +35,10 @@
             app:seat_seatNoTextSize="10dp"
             app:seat_seatNoTopMargin="10dp"
             app:seat_seatNoWidth="20dp"
-            app:seat_showSeatNo="true" />
+            app:seat_showSeatNo="true"
+            app:seat_fontFamily="@font/proxima_regular"
+            app:seat_seatCodesTextColor="#aadd22"
+            />
 
         <com.kokozu.widget.seatview.SeatThumbnailView
             android:id="@+id/thumbnail_view"
