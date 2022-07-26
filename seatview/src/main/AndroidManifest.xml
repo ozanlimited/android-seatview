@@ -2,7 +2,6 @@
     package="com.kokozu.widget.seatview">
 
     <application
-        android:allowBackup="true"
         android:supportsRtl="true">
 
     </application>
