@@ -2,8 +2,6 @@ package com.kokozu.widget.samples;
 
 import android.graphics.Point;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -26,6 +24,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements OnChooseSeatListener {
 
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
                     seatData.state = row.get(i).isAvailable()
                                     ? SeatData.STATE_NORMAL
                                     : SeatData.STATE_SOLD;
+                    seatData.seatNo = seatRow + "" + (i+1);
                     seatData.point = new Point(rowIndex, i+1);
                     if (row.get(i).getSeatType().equals("HANDICAPPED")) {
                         seatData.type = SeatData.TYPE_AFFLICTED;
