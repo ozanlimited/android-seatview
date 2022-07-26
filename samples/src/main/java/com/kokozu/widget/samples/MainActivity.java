@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
 
             InputStream is = getAssets().open("biletinial/seats1.json");
             String seatsText = convertStreamToString(is);
+            // https://github.com/alibaba/fastjson/issues/491
             HashMap<String,List<BSeat>> SEATSOFBILETINIAL = (HashMap<String, List<BSeat>>) JSON.parseObject(seatsText, new TypeReference<Map<String, List<BSeat>>>() {});
 
             Set<String> rowSet = SEATSOFBILETINIAL.keySet();
