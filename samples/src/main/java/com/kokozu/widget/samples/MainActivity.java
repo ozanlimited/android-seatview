@@ -38,12 +38,13 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         seatView = findViewById(R.id.seat_view);
+        seatView.setMaxSelectedCount(5);
         thumbnailView = findViewById(R.id.thumbnail_view);
         seatView.attachThumbnailView(thumbnailView);
         seatView.setOnChooseSeatListener(this);
         seatView.setSeatState(SeatView.STATE_LOADING);
 
-        loadSeats();
+        loadSeats("biletinial/seats2.json");
 
         findViewById(R.id.btn1).setOnClickListener(mRecommendClicked);
         findViewById(R.id.btn2).setOnClickListener(mRecommendClicked);
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
         findViewById(R.id.btn4).setOnClickListener(mRecommendClicked);
 
         findViewById(R.id.btn5).setOnClickListener(mRegularClicked);
+        findViewById(R.id.seats1_json).setOnClickListener(mRecommendClicked);
+        findViewById(R.id.seats2_json).setOnClickListener(mRecommendClicked);
     }
 
     private View.OnClickListener mRecommendClicked =
@@ -58,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
 
                 @Override
                 public void onClick(View v) {
-                    int recommendCount;
+                    int recommendCount = 1;
                     switch (v.getId()) {
                         case R.id.btn1:
                             recommendCount = 1;
@@ -76,15 +79,23 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
                             recommendCount = 4;
                             break;
 
+                        case R.id.seats1_json:
+                            loadSeats("biletinial/seats1.json");
+                            break;
+
+                        case R.id.seats2_json:
+                            loadSeats("biletinial/seats2.json");
+                            break;
+
                         default:
                             recommendCount = 1;
                             break;
                     }
-                    List<SeatData> seats = seatView.selectRecommendSeats(recommendCount);
-                    if (seats == null || seats.size() == 0) {
-                        Toast.makeText(MainActivity.this, "No recommended seats", Toast.LENGTH_SHORT).show();
-                    }
-                    seatView.setSelectedData(seats);
+//                    List<SeatData> seats = seatView.selectRecommendSeats(recommendCount);
+//                    if (seats == null || seats.size() == 0) {
+//                        Toast.makeText(MainActivity.this, "No recommended seats", Toast.LENGTH_SHORT).show();
+//                    }
+//                    seatView.setSelectedData(seats);
                 }
             };
 
@@ -99,14 +110,14 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
                 }
             };
 
-    private void loadSeats() {
+    private void loadSeats(String seatFile) {
         new Thread(
                 new Runnable() {
 
                     @Override
                     public void run() {
                         try {
-                            final Pair<String[], List<SeatData>> biletinialList = generateBiletinial();
+                            final Pair<String[], List<SeatData>> biletinialList = generateBiletinial(seatFile);
                             final List<SeatData> seatList = generateSeats();
 //                            final List<SeatData> soldSeats = generateSolds();
                             runOnUiThread(
@@ -127,11 +138,11 @@ public class MainActivity extends AppCompatActivity implements OnChooseSeatListe
                 .start();
     }
 
-    private Pair<String[], List<SeatData>> generateBiletinial() {
+    private Pair<String[], List<SeatData>> generateBiletinial(String seatFile) {
         try {
             final List<SeatData> seatList = new ArrayList<>();
 
-            InputStream is = getAssets().open("biletinial/seats1.json");
+            InputStream is = getAssets().open(seatFile);
             String seatsText = convertStreamToString(is);
             // https://github.com/alibaba/fastjson/issues/491
             HashMap<String,List<BSeat>> SEATSOFBILETINIAL = (HashMap<String, List<BSeat>>) JSON.parseObject(seatsText, new TypeReference<Map<String, List<BSeat>>>() {});

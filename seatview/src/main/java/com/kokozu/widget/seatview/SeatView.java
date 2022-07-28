@@ -80,6 +80,7 @@ public class SeatView extends View {
     private float mCurrentX, mCurrentY;
     private float mDrawStartX, mDrawStartY;
     private int mMaxRow, mMaxCol;
+
     private int mMaxSelectedCount;
 
     private Drawable mSeatNormal;
@@ -216,7 +217,7 @@ public class SeatView extends View {
 
     private void setFont(int fontId) {
         if (fontId > 0) {
-            typeFace = ResourcesCompat.getFont(getContext(),fontId);
+            typeFace = ResourcesCompat.getFont(getContext(), fontId);
         }
     }
 
@@ -428,15 +429,15 @@ public class SeatView extends View {
             if (seatCodesPaint == null) {
                 buildSeatCodesPaint();
             }
-            float textSize = 10.0f + (15.0f * (mScale));
+            float textSize = 8.0f + (13.0f * (mScale));
             seatCodesPaint.setTextSize(textSize);
             drawable.setBounds(bounds);
             drawable.draw(canvas);
             Rect textBound = new Rect();
             seatCodesPaint.getTextBounds(seat.seatNo, 0, seat.seatNo.length(), textBound);
             canvas.drawText(seat.seatNo,
-                    bounds.left + ((bounds.right-bounds.left)/2),
-                    bounds.top + ((bounds.bottom -bounds.top)/2) - (textBound.top)/2,
+                    bounds.left + ((bounds.right - bounds.left) / 2),
+                    bounds.top  + ((bounds.bottom - bounds.top) / 2) + (textBound.top * mScale),
                     seatCodesPaint);
         }
     }
@@ -520,7 +521,7 @@ public class SeatView extends View {
                 mTouchMode = ZOOM;
             }
         }
-            // finger raised
+        // finger raised
         else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
             isMoveMode = false;
             if (mSelectable
@@ -658,6 +659,9 @@ public class SeatView extends View {
         }
     }
 
+    public void setMaxSelectedCount(int maxSelectableCount) {
+        this.mMaxSelectedCount = maxSelectableCount;
+    }
     private boolean checkSeatRegular(SeatData seat, boolean selectSeat) {
         // Check seat selection rules when choosing seats
         if (isCheckRegularWhilePickSeat) {
@@ -868,7 +872,7 @@ public class SeatView extends View {
      * Set seat map data。
      *
      * @param seats Seat List
-     * @param rows rows
+     * @param rows  rows
      */
     public void setSeatData(List<SeatData> seats, String[] rows) {
         mSelectedSeats.clear();

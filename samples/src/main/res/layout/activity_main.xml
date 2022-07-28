@@ -12,10 +12,8 @@
         <com.kokozu.widget.seatview.SeatView
             android:id="@+id/seat_view"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="500dp"
             android:background="#000936"
-            app:seat_centerLineColor="#ea6060"
-            app:seat_centerLineWidth="1dp"
             app:seat_checkRegularWhilePickSeat="false"
             app:seat_drawableLoverLeftNormal="@drawable/ic_seat_lover_normal_l"
             app:seat_drawableLoverLeftSelected="@drawable/ic_seat_lover_selected_l"
@@ -37,7 +35,7 @@
             app:seat_seatNoWidth="20dp"
             app:seat_showSeatNo="true"
             app:seat_fontFamily="@font/proxima_regular"
-            app:seat_seatCodesTextColor="#aadd22"
+            app:seat_seatCodesTextColor="#ffffff"
             />
 
         <com.kokozu.widget.seatview.SeatThumbnailView
@@ -62,6 +60,7 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -96,9 +95,22 @@
     </LinearLayout>
 
     <Button
+        android:visibility="gone"
         android:id="@+id/btn5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Are there any vacancies" />
+
+    <Button
+        android:id="@+id/seats1_json"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="seats1_json" />
+
+    <Button
+        android:id="@+id/seats2_json"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="seats2_json" />
 
 </LinearLayout>
