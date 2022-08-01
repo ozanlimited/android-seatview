@@ -351,7 +351,8 @@ public class SeatView extends View {
         // draw seat numbers
         if (mShowSeatNo && mSeatNo != null) {
             float seatNoHeight = mMaxRow * mSeatHeight * mScale;
-            mSeatNoPainter.drawSeatNo(mSeatNo, canvas, mMaxRow, mDrawStartY, seatNoHeight);
+            //Log.i("SCALE", "mScale :" + mScale + "   mMinScale: " +mMinScale);
+            mSeatNoPainter.drawSeatNo(mSeatNo, canvas, mMaxRow, mDrawStartY, seatNoHeight, mScale != mMinScale);
         }
     }
 

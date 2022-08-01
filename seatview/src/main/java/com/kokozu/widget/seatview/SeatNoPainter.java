@@ -73,7 +73,7 @@ class SeatNoPainter {
         return mSeatNoLeftMargin + mSeatNoWidth + Utils.dp2px(mContext, 5);
     }
 
-    void drawSeatNo(String[] seatNo, Canvas canvas, int maxRow, float drawTop, float height) {
+    void drawSeatNo(String[] seatNo, Canvas canvas, int maxRow, float drawTop, float height, boolean zoomed) {
         canvas.save();
         float h = height + mSeatNoTopMargin * 2;
         float left = mSeatNoLeftMargin;
@@ -91,7 +91,10 @@ class SeatNoPainter {
             float textEndY = textStartY + noHeight;
             float baseline = (textStartY + textEndY - fontMetrics.bottom - fontMetrics.top) / 2;
             if (!TextUtils.isEmpty(seatNo[i])) {
-                canvas.drawText(seatNo[i], x, baseline, mSeatNoPaint);
+                if (!zoomed) {
+                    // if user zoomed into seats, do not draw seat numbers for preventing any overlapping issue
+                    canvas.drawText(seatNo[i], x, baseline, mSeatNoPaint);
+                }
             }
         }
         canvas.restore();
