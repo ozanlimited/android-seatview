@@ -66,7 +66,7 @@ class SeatNoPainter {
         mSeatNoPaint.setTextSize(textSize);
         mSeatNoPaint.setColor(mSeatNoTextColor);
         mSeatNoPaint.setAntiAlias(true);
-        mSeatNoPaint.setTextAlign(Paint.Align.CENTER);
+        mSeatNoPaint.setTextAlign(Paint.Align.LEFT);
     }
 
     int getPaddingX() {
