@@ -32,7 +32,7 @@ ext {
     mGroupId = "com.ozanlimited"
     mArtifactId = "seatview"
     mVersionCode = 1
-    mVersionName = "1.0.0"
+    mVersionName = "1.0.1"
 
     mLibraryName = "Seat-View"
     mLibraryDescription = ""

@@ -30,10 +30,10 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build AAR ⚙️🛠
-        run: bash ./gradlew :viewpagerdotsindicator:assemble
+        run: bash ./gradlew :seatview:assemble
 
       - name: Publish to GitLab Package Registry 🚀
-        run: bash ./gradlew :viewpagerdotsindicator:publish
+        run: bash ./gradlew :seatview:publish
         env:
           GPR_USER: ${{ github.actor }}
           GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
