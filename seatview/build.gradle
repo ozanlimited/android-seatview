@@ -4,6 +4,7 @@ buildscript {
     }
 }
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 31
@@ -27,11 +28,62 @@ android {
     }
 }
 
-dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.annotation:annotation:1.4.0'
-    def core_version = "1.8.0"
+ext {
+    mGroupId = "com.ozanlimited"
+    mArtifactId = "seatview"
+    mVersionCode = 1
+    mVersionName = "1.0.0"
 
-    // Java language implementation
-    implementation "androidx.core:core:$core_version"
+    mLibraryName = "Seat-View"
+    mLibraryDescription = ""
+}
+
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.srcDirs
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId mGroupId
+                artifactId mArtifactId
+                version mVersionName
+
+                from components.release
+
+                artifact androidSourcesJar
+
+                pom {
+                    name = mLibraryName
+                    description = mLibraryDescription
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                url System.getenv("GITLAB_REPO_URL")
+                credentials(HttpHeaderCredentials) {
+                    name = System.getenv("GITLAB_DEPLOY_KEY")
+                    value = System.getenv("GITLAB_DEPLOY_TOKEN")
+                }
+                authentication {
+                    header(HttpHeaderAuthentication)
+                }
+            }
+        }
+    }
+
+    publish.dependsOn assemble
+
+    dependencies {
+        implementation fileTree(include: ['*.jar'], dir: 'libs')
+        implementation 'androidx.annotation:annotation:1.4.0'
+        def core_version = "1.8.0"
+
+        // Java language implementation
+        implementation "androidx.core:core:$core_version"
+    }
 }
